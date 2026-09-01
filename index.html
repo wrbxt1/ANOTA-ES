@@ -1,2468 +1,1830 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<!-- Impede o Google Tradutor de alterar nomes e textos -->
-<meta name="google" content="notranslate">
-
-<title>Para Maria Eduarda ✨</title>
-
-<style>
-
-/* ==================================================
-   RESET
-================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-    background:#16051f;
-
-    color:white;
-
-    overflow:hidden;
-}
-
-
-/* ==================================================
-   FUNDO ROXO
-================================================== */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(160,70,255,.28),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(255,80,180,.20),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(110,30,180,.30),
-            transparent 40%
-        ),
-
-        linear-gradient(
-            135deg,
-            #12051b,
-            #27083a,
-            #180522,
-            #351044
-        );
-
-    pointer-events:none;
-
-    z-index:-2;
-}
-
-
-/* ==================================================
-   BRILHO DO FUNDO
-================================================== */
-
-body::after{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-        radial-gradient(
-            circle,
-            transparent 35%,
-            rgba(0,0,0,.25) 100%
-        );
-
-    pointer-events:none;
-
-    z-index:-1;
-}
-
-
-/* ==================================================
-   TELA DE ENTRADA
-================================================== */
-
-#entrada{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #351044,
-            #16051f 65%,
-            #08020d
-        );
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    z-index:9999;
-
-    transition:1.2s ease;
-}
-
-
-.entrada-conteudo{
-
-    width:90%;
-
-    max-width:600px;
-
-    animation:aparecer 1.5s ease;
-}
-
-
-.entrada-conteudo .pequeno{
-
-    font-size:13px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-
-    color:#d8b7ff;
-
-    margin-bottom:25px;
-}
-
-
-.entrada-conteudo h1{
-
-    font-size:
-    clamp(40px,8vw,75px);
-
-    font-weight:300;
-
-    margin-bottom:15px;
-
-    text-shadow:
-    0 0 30px rgba(210,120,255,.25);
-}
-
-
-.entrada-conteudo h1 span{
-
-    font-weight:bold;
-
-    background:
-    linear-gradient(
-        90deg,
-        #fff,
-        #dba8ff,
-        #fff
-    );
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-}
-
-
-.entrada-conteudo p{
-
-    color:#cbbbd5;
-
-    font-size:16px;
-
-    line-height:1.8;
-
-    margin-bottom:35px;
-}
-
-
-#btnEntrar{
-
-    border:none;
-
-    padding:16px 32px;
-
-    border-radius:50px;
-
-    background:white;
-
-    color:#21072e;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    box-shadow:
-    0 10px 35px
-    rgba(190,90,255,.25);
-}
-
-
-#btnEntrar:hover{
-
-    transform:scale(1.07);
-
-    box-shadow:
-    0 15px 45px
-    rgba(220,130,255,.4);
-}
-
-
-/* ==================================================
-   SITE
-================================================== */
-
-#site{
-
-    display:none;
-
-    height:100vh;
-
-    position:relative;
-}
-
-
-/* ==================================================
-   SLIDES
-================================================== */
-
-.slide{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:
-    60px
-    20px
-    100px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:scale(1.04);
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-}
-
-
-.slide.ativo{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:scale(1);
-}
-
-
-.conteudo{
-
-    width:100%;
-
-    max-width:900px;
-
-    max-height:82vh;
-
-    overflow:auto;
-
-    text-align:center;
-
-    padding:20px;
-}
-
-
-.conteudo::-webkit-scrollbar{
-
-    width:4px;
-}
-
-
-.conteudo::-webkit-scrollbar-thumb{
-
-    background:#a86bd1;
-
-    border-radius:10px;
-}
-
-
-/* ==================================================
-   TEXTOS
-================================================== */
-
-.eyebrow{
-
-    color:#d9b4ff;
-
-    text-transform:uppercase;
-
-    letter-spacing:4px;
-
-    font-size:12px;
-
-    margin-bottom:18px;
-}
-
-
-h2{
-
-    font-size:
-    clamp(35px,6vw,65px);
-
-    font-weight:300;
-
-    margin-bottom:25px;
-
-    line-height:1.15;
-
-    text-shadow:
-    0 0 30px rgba(210,120,255,.15);
-}
-
-
-h2 strong{
-
-    font-weight:bold;
-
-    background:
-    linear-gradient(
-        90deg,
-        #fff,
-        #dba8ff
-    );
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-}
-
-
-.texto{
-
-    max-width:700px;
-
-    margin:auto;
-
-    color:#ddd0e5;
-
-    font-size:17px;
-
-    line-height:1.9;
-}
-
-
-.destaque{
-
-    font-size:
-    clamp(25px,4vw,45px);
-
-    line-height:1.5;
-
-    max-width:750px;
-
-    margin:auto;
-}
-
-
-/* ==================================================
-   BOTÕES
-================================================== */
-
-.btn{
-
-    display:inline-block;
-
-    margin-top:30px;
-
-    padding:14px 28px;
-
-    border:
-    1px solid
-    rgba(255,255,255,.3);
-
-    border-radius:50px;
-
-    color:white;
-
-    background:
-    rgba(255,255,255,.07);
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    backdrop-filter:blur(10px);
-}
-
-
-.btn:hover{
-
-    background:white;
-
-    color:#24082f;
-
-    transform:translateY(-3px);
-}
-
-
-/* ==================================================
-   NAVEGAÇÃO
-================================================== */
-
-.navegacao{
-
-    position:fixed;
-
-    bottom:25px;
-
-    left:0;
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:20px;
-
-    z-index:100;
-}
-
-
-.nav-btn{
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    border:
-    1px solid
-    rgba(255,255,255,.3);
-
-    background:
-    rgba(20,5,30,.65);
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    transition:.3s;
-}
-
-
-.nav-btn:hover{
-
-    background:white;
-
-    color:#21072e;
-}
-
-
-#contadorSlide{
-
-    color:#c9afd4;
-
-    font-size:13px;
-
-    min-width:45px;
-
-    text-align:center;
-}
-
-
-/* ==================================================
-   INDICADORES
-================================================== */
-
-.indicadores{
-
-    position:fixed;
-
-    top:25px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    gap:6px;
-
-    z-index:100;
-
-    max-width:90%;
-
-    overflow:hidden;
-}
-
-
-.indicador{
-
-    width:25px;
-
-    height:3px;
-
-    background:#51335f;
-
-    transition:.4s;
-
-    flex-shrink:0;
-}
-
-
-.indicador.ativo{
-
-    background:#e3b8ff;
-
-    box-shadow:
-    0 0 10px
-    rgba(220,150,255,.5);
-}
-
-
-/* ==================================================
-   GALERIA
-================================================== */
-
-.galeria{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:22px;
-
-    max-width:750px;
-
-    margin:
-    35px
-    auto
-    0;
-}
-
-
-.foto-card{
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:22px;
-
-    background:#160b1d;
-
-    border:
-    1px solid
-    rgba(255,255,255,.15);
-
-    box-shadow:
-    0 20px 50px
-    rgba(0,0,0,.45);
-
-    transition:.5s ease;
-}
-
-
-.foto-card:hover{
-
-    transform:
-    translateY(-8px)
-    scale(1.02);
-}
-
-
-.foto-card img{
-
-    width:100%;
-
-    height:420px;
-
-    object-fit:cover;
-
-    display:block;
-
-    transition:.7s ease;
-}
-
-
-.foto-card:hover img{
-
-    transform:scale(1.06);
-}
-
-
-.foto-legenda{
-
-    position:absolute;
-
-    bottom:0;
-
-    left:0;
-
-    right:0;
-
-    padding:
-    45px
-    18px
-    18px;
-
-    background:
-    linear-gradient(
-        transparent,
-        rgba(20,5,25,.95)
-    );
-
-    text-align:left;
-}
-
-
-.foto-legenda span{
-
-    font-size:13px;
-
-    color:#eee;
-}
-
-
-/* ==================================================
-   CARDS
-================================================== */
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:15px;
-
-    max-width:750px;
-
-    margin:
-    30px
-    auto
-    0;
-}
-
-
-.card{
-
-    padding:25px;
-
-    border:
-    1px solid
-    rgba(255,255,255,.12);
-
-    border-radius:18px;
-
-    background:
-    rgba(255,255,255,.045);
-
-    transition:.3s;
-
-    backdrop-filter:blur(8px);
-}
-
-
-.card:hover{
-
-    transform:translateY(-5px);
-
-    background:
-    rgba(255,255,255,.08);
-}
-
-
-.card .icone{
-
-    font-size:30px;
-
-    margin-bottom:12px;
-}
-
-
-.card h3{
-
-    font-size:17px;
-
-    margin-bottom:8px;
-}
-
-
-.card p{
-
-    color:#bcaec4;
-
-    font-size:14px;
-
-    line-height:1.6;
-}
-
-
-/* ==================================================
-   CONTADOR
-================================================== */
-
-.contador{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-    margin-top:30px;
-}
-
-
-.numero{
-
-    min-width:100px;
-
-    padding:20px;
-
-    border:
-    1px solid
-    rgba(255,255,255,.12);
-
-    border-radius:15px;
-
-    background:
-    rgba(255,255,255,.04);
-
-    backdrop-filter:blur(8px);
-}
-
-
-.numero strong{
-
-    display:block;
-
-    font-size:28px;
-}
-
-
-.numero span{
-
-    font-size:11px;
-
-    color:#a58fac;
-
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-}
-
-
-/* ==================================================
-   CARTA
-================================================== */
-
-.carta{
-
-    max-width:700px;
-
-    margin:auto;
-
-    padding:35px;
-
-    border:
-    1px solid
-    rgba(255,255,255,.12);
-
-    background:
-    rgba(255,255,255,.045);
-
-    border-radius:20px;
-
-    text-align:left;
-
-    line-height:2;
-
-    color:#ddd;
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-    0 20px 60px
-    rgba(0,0,0,.25);
-}
-
-
-.carta .assinatura{
-
-    margin-top:25px;
-
-    text-align:right;
-
-    font-style:italic;
-
-    color:white;
-}
-
-
-/* ==================================================
-   CORAÇÕES
-================================================== */
-
-.coracao{
-
-    position:fixed;
-
-    bottom:-30px;
-
-    font-size:18px;
-
-    animation:
-    subir
-    linear
-    forwards;
-
-    pointer-events:none;
-
-    z-index:999;
-
-    filter:
-    drop-shadow(
-        0 0 8px
-        rgba(220,150,255,.5)
-    );
-}
-
-
-@keyframes subir{
-
-    0%{
-
-        transform:
-        translateY(0)
-        scale(.5);
-
-        opacity:0;
-    }
-
-    15%{
-
-        opacity:.8;
-    }
-
-    100%{
-
-        transform:
-        translateY(-110vh)
-        scale(1.4);
-
-        opacity:0;
-    }
-
-}
-
-
-/* ==================================================
-   ANIMAÇÕES
-================================================== */
-
-@keyframes aparecer{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        translateY(20px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-        translateY(0);
-    }
-
-}
-
-
-.pulsar{
-
-    animation:
-    pulsar
-    2s
-    infinite;
-}
-
-
-@keyframes pulsar{
-
-    0%,100%{
-
-        transform:scale(1);
-    }
-
-    50%{
-
-        transform:scale(1.08);
-    }
-
-}
-
-
-/* ==================================================
-   MOBILE
-================================================== */
-
-@media(max-width:650px){
-
-    .slide{
-
-        padding:
-        55px
-        15px
-        100px;
-    }
-
-
-    .conteudo{
-
-        max-height:78vh;
-
-        padding:10px;
-    }
-
-
-    .texto{
-
-        font-size:15px;
-
-        line-height:1.8;
-    }
-
-
-    .cards{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .galeria{
-
-        grid-template-columns:1fr;
-
-        gap:18px;
-    }
-
-
-    .foto-card img{
-
-        height:430px;
-    }
-
-
-    .contador{
-
-        gap:8px;
-    }
-
-
-    .numero{
-
-        min-width:75px;
-
-        padding:15px 8px;
-    }
-
-
-    .numero strong{
-
-        font-size:22px;
-    }
-
-
-    .carta{
-
-        padding:25px;
-
-        font-size:14px;
-    }
-
-
-    .indicadores{
-
-        gap:4px;
-    }
-
-
-    .indicador{
-
-        width:18px;
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maria Eduarda — Meu Registro</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d0b10;
+            --card: #17131b;
+            --card2: #211a25;
+            --pink: #ff5c9a;
+            --pink-light: #ff9fc2;
+            --purple: #9c6cff;
+            --text: #f8f4f7;
+            --muted: #aaa0aa;
+            --border: rgba(255,255,255,.08);
+            --green: #69d89b;
+            --yellow: #ffd166;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 20% 0%, rgba(255,92,154,.13), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(156,108,255,.12), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        /* HEADER */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(13,11,16,.82);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            font-size: 21px;
+            box-shadow: 0 8px 30px rgba(255,92,154,.25);
+        }
+
+        .logo h1 {
+            font-size: 17px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        nav {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            color: white;
+            background: rgba(255,255,255,.07);
+        }
+
+        /* MAIN */
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 22px 80px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 45px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--pink-light);
+            background: rgba(255,92,154,.09);
+            border: 1px solid rgba(255,92,154,.18);
+            padding: 7px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .hero h2 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h2 span {
+            background: linear-gradient(90deg, #ff6ba5, #b38aff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .hero-photo {
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 70px rgba(0,0,0,.4);
+        }
+
+        .photo-caption {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            right: 16px;
+            padding: 12px 15px;
+            border-radius: 16px;
+            background: rgba(10,8,12,.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,.1);
+            font-size: 13px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            margin-top: 55px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .section-title small {
+            color: var(--pink-light);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h3 {
+            font-size: 28px;
+            margin-top: 4px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* CARDS */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 21px;
+            transition: .25s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,92,154,.25);
+            background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255,92,154,.1);
+            display: grid;
+            place-items: center;
+            margin-bottom: 13px;
+            font-size: 19px;
+        }
+
+        .card h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .highlight {
+            color: var(--pink-light);
+        }
+
+        /* IMPORTANT NOTES */
+
+        .notes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .note {
+            padding: 20px;
+            border-radius: 18px;
+            background: var(--card);
+            border-left: 3px solid var(--pink);
+        }
+
+        .note strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .note span {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            position: relative;
+            margin-top: 25px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(var(--pink), rgba(255,255,255,.04));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 25px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--pink);
+            box-shadow: 0 0 0 5px rgba(255,92,154,.12);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--pink-light);
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h4 {
+            margin-bottom: 4px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* QUOTES */
+
+        .quotes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        blockquote {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "“";
+            font-size: 55px;
+            color: rgba(255,92,154,.3);
+            position: absolute;
+            top: -5px;
+            left: 13px;
+        }
+
+        blockquote p {
+            padding-top: 22px;
+            font-size: 15px;
+        }
+
+        blockquote cite {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 10px;
+            font-style: normal;
+        }
+
+        /* WISHLIST */
+
+        .wishlist {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .wish {
+            padding: 20px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #201721, #151118);
+            border: 1px solid var(--border);
+        }
+
+        .wish .emoji {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .wish h4 {
+            margin-bottom: 5px;
+        }
+
+        .wish p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* ALLIANCE */
+
+        .ring-section {
+            background:
+                radial-gradient(circle at center, rgba(255,92,154,.08), transparent 55%),
+                var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .ring-section h3 {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .ring-section p {
+            color: var(--muted);
+        }
+
+        .ring-photo {
+            text-align: center;
+        }
+
+        .ring-photo img {
+            width: 100%;
+            max-width: 320px;
+            height: 260px;
+            object-fit: contain;
+            border-radius: 20px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid var(--border);
+        }
+
+        .ring-info {
+            margin-top: 15px;
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 8px 13px;
+            border-radius: 30px;
+            background: rgba(255,92,154,.08);
+            color: var(--pink-light);
+            font-size: 13px;
+        }
+
+        /* PLANS */
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .plan {
+            padding: 21px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .plan h4 {
+            margin-bottom: 8px;
+        }
+
+        .plan p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            background: rgba(255,209,102,.1);
+            color: var(--yellow);
+        }
+
+        /* PERSONAL NOTES */
+
+        .editor {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .editor input,
+        .editor textarea {
+            width: 100%;
+            background: #0f0c12;
+            color: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 13px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        .editor input:focus,
+        .editor textarea:focus {
+            border-color: rgba(255,92,154,.5);
+        }
+
+        .editor textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 12px;
+            padding: 11px 17px;
+            cursor: pointer;
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .saved-notes {
+            margin-top: 18px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .saved-note {
+            padding: 15px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid var(--border);
+        }
+
+        .saved-note strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .saved-note p {
+            color: var(--muted);
+            white-space: pre-wrap;
+        }
+
+        .delete {
+            margin-top: 8px;
+            background: transparent;
+            border: 1px solid rgba(255,80,100,.2);
+            color: #ff8d9c;
+            border-radius: 8px;
+            padding: 5px 9px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 25px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photo {
+                max-width: 500px;
+            }
+
+            .grid,
+            .wishlist {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ring-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-inner {
+                align-items: flex-start;
+            }
+
+            nav {
+                display: none;
+            }
+
+            main {
+                padding: 30px 15px 60px;
+            }
+
+            .hero h2 {
+                font-size: 43px;
+            }
+
+            .hero-photo img {
+                height: 320px;
+            }
+
+            .grid,
+            .notes,
+            .quotes,
+            .wishlist,
+            .plans {
+                grid-template-columns: 1fr;
+            }
+
+            .ring-section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+<header>
+    <div class="header-inner">
 
-<!-- ==================================================
-     TELA INICIAL
-================================================== -->
+        <div class="logo">
+            <div class="logo-icon">🤍</div>
 
-<div id="entrada">
-
-    <div class="entrada-conteudo">
-
-        <div class="pequeno">
-            Uma pequena surpresa
+            <div>
+                <h1>Maria Eduarda</h1>
+                <span>Registro pessoal</span>
+            </div>
         </div>
 
-        <h1>
-            Para <span translate="no">Maria Eduarda</span>
-        </h1>
-
-        <p>
-            Algumas pessoas aparecem de repente...
-            <br>
-            e acabam despertando uma curiosidade
-            que dá vontade de descobrir onde vai dar.
-        </p>
-
-        <button id="btnEntrar">
-            Abrir surpresa ✨
-        </button>
+        <nav>
+            <a href="#resumo">Resumo</a>
+            <a href="#informacoes">Informações</a>
+            <a href="#acontecimentos">Acontecimentos</a>
+            <a href="#gostos">Gostos</a>
+            <a href="#planos">Planos</a>
+            <a href="#notas">Notas</a>
+        </nav>
 
     </div>
-
-</div>
-
-
-<!-- ==================================================
-     MÚSICA
-================================================== -->
-
-<audio
-    id="musica"
-    src="dia-lugar-e-hora.mp3"
-    preload="auto"
-    loop>
-</audio>
+</header>
 
 
-<!-- ==================================================
-     SITE
-================================================== -->
+<main>
 
-<div id="site">
+    <!-- HERO -->
 
+    <section class="hero" id="resumo">
 
-<!-- INDICADORES -->
+        <div>
 
-<div
-    class="indicadores"
-    id="indicadores">
-</div>
-
-
-<!-- ==================================================
-     SLIDE 1
-================================================== -->
-
-<section class="slide ativo">
-
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Maria Eduarda ✨
-        </div>
-
-        <h2>
-
-            Talvez isso aqui seja
-            <strong>inesperado.</strong>
-
-        </h2>
-
-        <p class="texto">
-
-            Eu poderia simplesmente continuar conversando
-            com você pelo WhatsApp e deixar as coisas
-            acontecerem naturalmente...
-
-            <br><br>
-
-            Mas você já percebeu que eu gosto de fazer
-            algumas coisas de um jeito diferente. 😂
-
-            <br><br>
-
-            E antes de continuar, escolhi uma música
-            que combina com a ideia desse momento:
-
-            <br><br>
-
-            <strong>
-                “Dia, Lugar e Hora” — Luan Santana.
-            </strong>
-
-            <br><br>
-
-            Então aperta o botão, deixa a música tocar
-            e vem descobrir o resto. 🎶✨
-
-        </p>
-
-        <button
-            class="btn"
-            onclick="iniciarMusicaEProximo()">
-
-            Começar 🎶 →
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     SLIDE 2
-================================================== -->
-
-<section class="slide">
-
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Algumas descobertas
-        </div>
-
-        <h2>
-
-            Coisas que eu já
-            <strong>descobri sobre você.</strong>
-
-        </h2>
-
-
-        <div class="cards">
-
-
-            <div class="card">
-
-                <div class="icone">
-                    🎂
-                </div>
-
-                <h3>
-                    Seu aniversário
-                </h3>
-
-                <p>
-                    Dia <strong>10 de abril</strong>.
-                    Agora essa data já ficou registrada. ✨
-                </p>
-
+            <div class="hero-tag">
+                ❤️ Registro da Maria Eduarda
             </div>
 
+            <h2>
+                Tudo que eu<br>
+                <span>não quero esquecer.</span>
+            </h2>
 
-            <div class="card">
-
-                <div class="icone">
-                    🏠
-                </div>
-
-                <h3>
-                    Sua família
-                </h3>
-
-                <p>
-                    Você mora com seus pais
-                    e tem dois irmãos.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icone">
-                    🖤
-                </div>
-
-                <h3>
-                    Preto
-                </h3>
-
-                <p>
-                    Já entendi que rosa não é exatamente
-                    a sua praia. 😂
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icone">
-                    ✈️
-                </div>
-
-                <h3>
-                    Viagens
-                </h3>
-
-                <p>
-                    Você mesma já falou que viajar
-                    é um dos melhores investimentos.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icone">
-                    🎬
-                </div>
-
-                <h3>
-                    Cinema
-                </h3>
-
-                <p>
-                    Um cineminha aparentemente
-                    faz parte da lista.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icone">
-                    🌹
-                </div>
-
-                <h3>
-                    Romantismo
-                </h3>
-
-                <p>
-                    Você gosta de romantismo
-                    e de ser surpreendida.
-                </p>
-
-            </div>
-
+            <p>
+                Um espaço particular para guardar acontecimentos,
+                detalhes, conversas, planos, gostos e pequenas coisas
+                que fazem diferença.
+            </p>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="hero-photo">
 
+            <!--
+                Se você tiver uma foto dela e quiser colocar aqui,
+                troque "maria.jpg" pelo nome do arquivo.
+            -->
 
-<!-- ==================================================
-     SLIDE 3 - FOTOS
-================================================== -->
+            <img
+                src="maria.jpg"
+                alt="Maria Eduarda"
+                onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#241521,#18121d)'; this.parentElement.style.height='380px'; this.parentElement.style.borderRadius='28px';"
+            >
 
-<section class="slide">
+            <div class="photo-caption">
+                ✨ O começo de uma história que ainda está sendo escrita.
+            </div>
 
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Uma pausa pra apreciar
         </div>
 
-        <h2>
-
-            Algumas coisas
-            <strong>merecem atenção.</strong>
-
-        </h2>
-
-        <p class="texto">
-
-            Eu poderia colocar uma legenda enorme aqui...
-            mas acho que essas fotos conseguem falar
-            um pouquinho por si mesmas. 😂
-
-        </p>
+    </section>
 
 
-        <div class="galeria">
+    <!-- INFORMAÇÕES -->
+
+    <section id="informacoes">
+
+        <div class="section-title">
+            <small>Sobre ela</small>
+            <h3>Informações importantes</h3>
+            <p>Coisas que ela contou durante as conversas.</p>
+        </div>
 
 
-            <!-- FOTO 1 -->
+        <div class="grid">
 
-            <div class="foto-card">
+            <div class="card">
+                <div class="card-icon">🎂</div>
+                <h4>Aniversário</h4>
+                <p>
+                    <span class="highlight">10 de abril</span>.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">👩‍👦‍👦</div>
+                <h4>Família</h4>
+                <p>
+                    Mora com os pais e tem dois irmãos,
+                    um de 20 anos e outro de 8.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">💅🏼</div>
+                <h4>Família</h4>
+                <p>
+                    Ela é a única filha mulher.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">📍</div>
+                <h4>Goiânia</h4>
+                <p>
+                    Mora em Goiânia e comentou que seria melhor
+                    se você também morasse por lá.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h4>Trabalho</h4>
+                <p>
+                    Já trabalhou em uma empresa de costura.
+                    Foi seu primeiro emprego e ficou lá por 4 anos.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">🧵</div>
+                <h4>Trabalho atualmente</h4>
+                <p>
+                    Desde julho está sem trabalhar fixamente,
+                    mas ainda é chamada para fazer algumas coisas.
+                    No momento estava fazendo o patrimônio da indústria.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PERSONALIDADE -->
+
+    <section>
+
+        <div class="section-title">
+            <small>Personalidade</small>
+            <h3>Como ela se descreve</h3>
+        </div>
+
+
+        <div class="notes">
+
+            <div class="note">
+                <strong>💗 Romântica</strong>
+                <span>
+                    Gosta de romantismo, flores e de ser mimada.
+                    Para ela, um homem romântico é tudo.
+                </span>
+            </div>
+
+            <div class="note">
+                <strong>✨ Criatividade</strong>
+                <span>
+                    Acha criatividade algo muito importante
+                    e gosta de ser surpreendida.
+                </span>
+            </div>
+
+            <div class="note">
+                <strong>😂 Humor variável</strong>
+                <span>
+                    Ela mesma disse que depende do dia:
+                    tem dias em que está zen e outros em que está na bad.
+                </span>
+            </div>
+
+            <div class="note">
+                <strong>🫶 Sincera</strong>
+                <span>
+                    Disse que é sincera e prefere que a outra pessoa
+                    também seja.
+                </span>
+            </div>
+
+            <div class="note">
+                <strong>⏰ Pontualidade</strong>
+                <span>
+                    Ela brincou se chamando de "inimiga da pontualidade".
+                </span>
+            </div>
+
+            <div class="note">
+                <strong>🥰 Lado fofo</strong>
+                <span>
+                    Disse que também tem um lado fofo e meigo.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACONTECIMENTOS -->
+
+    <section id="acontecimentos">
+
+        <div class="section-title">
+            <small>Memórias</small>
+            <h3>Linha do tempo</h3>
+            <p>Os acontecimentos mais importantes registrados até agora.</p>
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026 — início da conversa registrada
+                </div>
+
+                <h4>Conversas sobre relacionamento</h4>
+
+                <p>
+                    Maria deixou claro que procura alguém para a vida toda,
+                    desde que exista reciprocidade e aquilo que ela busca
+                    em uma relação.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Ela falou sobre viagens</h4>
+
+                <p>
+                    Disse que viajar é um dos melhores investimentos que
+                    uma pessoa pode fazer. Vocês chegaram a combinar
+                    que poderiam viajar juntos se desse certo.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Ela falou sobre o futuro</h4>
+
+                <p>
+                    Quando conversaram sobre filhos, ela disse que no futuro
+                    não sabe, mas que tudo teria que estar muito estruturado
+                    antes: principalmente psicológico e financeiro.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Show do Luan Santana</h4>
+
+                <p>
+                    Ela comentou que o show seria no dia
+                    <strong>27 de setembro</strong> e que sua preocupação
+                    naquele momento era escolher a roupa.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Ela explicou o estilo que gosta</h4>
+
+                <p>
+                    Para o show, comentou que gostaria de usar algo preto,
+                    com brilho ou couro, de preferência short ou calça.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Ela falou sobre romantismo</h4>
+
+                <p>
+                    Disse que ama flores, gosta de homem romântico
+                    e que ser mimada é maravilhoso.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Uma informação que virou importante</h4>
+
+                <p>
+                    Ela informou a numeração do dedo:
+                    <strong>18</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Shows e música</h4>
+
+                <p>
+                    Ela já foi três vezes para Brasília por causa de shows
+                    e disse que em Goiânia já perdeu as contas.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Artistas que ela gosta</h4>
+
+                <p>
+                    Jorge e Mateus, Luan Santana, Matheus e Kauan,
+                    Bruno Mars, Henrique e Juliano, entre outros.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    30/08/2026
+                </div>
+
+                <h4>Ela gosta de toque físico</h4>
+
+                <p>
+                    Contou que gosta de passar as mãos no rosto,
+                    no cabelo, dar selinho e outros carinhos.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Ela gostou da surpresa</h4>
+
+                <p>
+                    Depois de receber a surpresa enviada por você,
+                    ela disse que amou, elogiou a criatividade e falou:
+                    "Que seja o início de uma linda história".
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Primeiro encontro sendo planejado</h4>
+
+                <p>
+                    Vocês conversaram sobre se encontrar no final de semana.
+                    Surgiu a ideia de jantar e depois assistir a um filme.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Filmes</h4>
+
+                <p>
+                    Ela gosta de drama, suspense, terror e romance.
+                    Disse que não curte ação e ficção científica.
+                    Também demonstrou interesse em assistir "Odisseia".
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Ela quer te ver pessoalmente</h4>
+
+                <p>
+                    Durante a conversa, ela aceitou a ideia de vocês se
+                    encontrarem e respondeu positivamente aos planos.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Ela colocou limites importantes</h4>
+
+                <p>
+                    Ela deixou claro que prefere ir com calma,
+                    sem pressão e respeitando o tempo dela.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Aliança virou assunto</h4>
+
+                <p>
+                    A conversa chegou ao ponto em que você comentou
+                    que logo haveria uma aliança no dedo dela.
+                    Ela entrou na brincadeira e respondeu:
+                    "Será mesmo Deus?".
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Ela ficou ansiosa</h4>
+
+                <p>
+                    Quando você comentou que já sabia sobre a aliança,
+                    ela respondeu que iria ficar ansiosa.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Ideia de algo combinando</h4>
+
+                <p>
+                    Ela comentou que gostaria de comprar uma capa de
+                    celular combinando e também um pijama.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    31/08/2026
+                </div>
+
+                <h4>Skincare</h4>
+
+                <p>
+                    Ela comentou sobre usar argila e esfoliante
+                    em sua rotina de cuidados.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    01/09/2026
+                </div>
+
+                <h4>Bom dia diferente</h4>
+
+                <p>
+                    Ela contou que dormiu conversando com você na noite anterior
+                    e que não dormiu o suficiente.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    01/09/2026
+                </div>
+
+                <h4>Ela revelou mais um lado</h4>
+
+                <p>
+                    Disse que possui seu lado fofo e meigo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GOSTOS -->
+
+    <section id="gostos">
+
+        <div class="section-title">
+            <small>Detalhes</small>
+            <h3>Coisas que ela gosta</h3>
+        </div>
+
+
+        <div class="wishlist">
+
+            <div class="wish">
+                <div class="emoji">🌹</div>
+                <h4>Flores</h4>
+                <p>
+                    Ela ama flores.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">💌</div>
+                <h4>Cartas</h4>
+                <p>
+                    Gosta de demonstrações exageradas de carinho,
+                    incluindo cartas.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">🧸</div>
+                <h4>Ursos de pelúcia</h4>
+                <p>
+                    Também citou ursinhos de pelúcia como uma
+                    demonstração romântica que gosta.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">🍫</div>
+                <h4>Chocolate</h4>
+                <p>
+                    Chocolate também entrou na lista de mimos.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">📸</div>
+                <h4>Fotos românticas</h4>
+                <p>
+                    Gosta da ideia de postar foto com música romântica.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">💋</div>
+                <h4>Toque físico</h4>
+                <p>
+                    Gosta de carinho, selinho, mexer no cabelo,
+                    mãos no rosto e proximidade.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">💆‍♀️</div>
+                <h4>Cabelo</h4>
+                <p>
+                    Disse que gosta principalmente quando mexem no cabelo dela.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">🌙</div>
+                <h4>Carinho à distância</h4>
+                <p>
+                    Vocês chegaram a conversar sobre uma pulseira
+                    de sol e lua que poderia vibrar quando um dos dois
+                    sentisse saudade.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">🧴</div>
+                <h4>Cheiros</h4>
+                <p>
+                    Ela ama cheirinhos e perfumes, mas deixou claro
+                    que prefere escolher o próprio perfume.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">👗</div>
+                <h4>Estilo</h4>
+                <p>
+                    Para o show: preto, brilho ou couro,
+                    preferindo short ou calça.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">🎵</div>
+                <h4>Música</h4>
+                <p>
+                    Luan Santana, Jorge e Mateus, Matheus e Kauan,
+                    Bruno Mars e Henrique e Juliano.
+                </p>
+            </div>
+
+
+            <div class="wish">
+                <div class="emoji">🎬</div>
+                <h4>Filmes</h4>
+                <p>
+                    Drama, suspense, terror e romance.
+                    Não gosta muito de ação e ficção científica.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ALIANÇA -->
+
+    <section>
+
+        <div class="section-title">
+            <small>Importante 👀</small>
+            <h3>A aliança</h3>
+            <p>Uma informação que definitivamente não pode ser esquecida.</p>
+        </div>
+
+
+        <div class="ring-section">
+
+            <div>
+
+                <h3>
+                    A numeração é <span class="highlight">18</span>.
+                </h3>
+
+                <p>
+                    Ela mesma falou a numeração durante a conversa.
+                    Depois disso, o assunto voltou a aparecer quando
+                    você comentou que já sabia qual aliança seria.
+                </p>
+
+                <div class="ring-info">
+                    💍 Dedo: tamanho 18
+                </div>
+
+                <div class="ring-info" style="margin-left:5px;">
+                    🤫 Assunto para lembrar
+                </div>
+
+            </div>
+
+
+            <div class="ring-photo">
 
                 <img
-                    src="https://i.postimg.cc/RVc5HmYq/foto1.jpg"
-                    alt="Maria Eduarda"
-                    translate="no">
+                    src="aliança.jpeg"
+                    alt="Modelo de aliança que Maria Eduarda gosta"
+                >
 
-                <div class="foto-legenda">
-
-                    <span>
-                        🤍 Simplesmente linda.
-                    </span>
-
+                <div class="ring-info">
+                    💍 Modelo escolhido por ela
                 </div>
 
             </div>
-
-
-            <!-- FOTO 2 -->
-
-            <div class="foto-card">
-
-                <img
-                    src="https://i.postimg.cc/g2m9y59m/foto2.jpg"
-                    alt="Maria Eduarda"
-                    translate="no">
-
-                <div class="foto-legenda">
-
-                    <span>
-                        ✨ Essa também merece destaque.
-                    </span>
-
-                </div>
-
-            </div>
-
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ==================================================
-     SLIDE 4 - MÚSICAS
-================================================== -->
+    <!-- FRASES -->
 
-<section class="slide">
+    <section>
 
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Sua trilha sonora 🎶
+        <div class="section-title">
+            <small>Frases para lembrar</small>
+            <h3>Algumas que ficaram marcadas</h3>
         </div>
 
-        <h2>
 
-            Já descobri alguns
-            <strong>dos seus favoritos.</strong>
+        <div class="quotes">
 
-        </h2>
-
-        <div class="cards">
-
-
-            <div class="card">
-
-                <div class="icone">
-                    ❤️
-                </div>
-
-                <h3>
-                    Luan Santana
-                </h3>
-
+            <blockquote>
                 <p>
-                    O favorito.
-                    Então não poderia faltar aqui.
+                    "Mas eu quero alguém pra vida toda."
                 </p>
 
-            </div>
+                <cite>
+                    — Maria Eduarda, 30/08/2026
+                </cite>
+            </blockquote>
 
 
-            <div class="card">
-
-                <div class="icone">
-                    🎵
-                </div>
-
-                <h3>
-                    Jorge & Mateus
-                </h3>
-
+            <blockquote>
                 <p>
-                    Mais uma dupla que já entrou
-                    para a playlist.
+                    "Que tudo seja recíproco."
                 </p>
 
-            </div>
+                <cite>
+                    — Maria Eduarda
+                </cite>
+            </blockquote>
 
 
-            <div class="card">
-
-                <div class="icone">
-                    🎶
-                </div>
-
-                <h3>
-                    Matheus & Kauan
-                </h3>
-
+            <blockquote>
                 <p>
-                    Também tem espaço garantido
-                    na sua trilha sonora.
+                    "Que seja o início de uma linda história."
                 </p>
 
-            </div>
+                <cite>
+                    — Maria Eduarda, após receber a surpresa
+                </cite>
+            </blockquote>
 
 
-            <div class="card">
-
-                <div class="icone">
-                    🌎
-                </div>
-
-                <h3>
-                    Bruno Mars
-                </h3>
-
+            <blockquote>
                 <p>
-                    Porque uma playlist boa
-                    também precisa variar.
+                    "Também estou amando te conhecer."
                 </p>
 
-            </div>
+                <cite>
+                    — Maria Eduarda
+                </cite>
+            </blockquote>
 
 
-            <div class="card">
-
-                <div class="icone">
-                    🤠
-                </div>
-
-                <h3>
-                    Henrique & Juliano
-                </h3>
-
+            <blockquote>
                 <p>
-                    Outro nome que não poderia
-                    ficar de fora.
+                    "Criatividade é tudo."
                 </p>
 
-            </div>
+                <cite>
+                    — Maria Eduarda
+                </cite>
+            </blockquote>
 
 
-            <div class="card">
-
-                <div class="icone">
-                    🎧
-                </div>
-
-                <h3>
-                    E essa música...
-                </h3>
-
+            <blockquote>
                 <p>
-                    “Dia, Lugar e Hora”
-                    ficou responsável pela trilha
-                    dessa surpresa.
+                    "Gosto de homem 'rumado'."
                 </p>
 
-            </div>
+                <cite>
+                    — Maria Eduarda
+                </cite>
+            </blockquote>
 
+
+            <blockquote>
+                <p>
+                    "Vai me deixar ansiosaaaaa."
+                </p>
+
+                <cite>
+                    — Maria Eduarda, sobre a aliança
+                </cite>
+            </blockquote>
+
+
+            <blockquote>
+                <p>
+                    "Muita calma nessa hora."
+                </p>
+
+                <cite>
+                    — Maria Eduarda
+                </cite>
+            </blockquote>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ==================================================
-     SLIDE 5
-================================================== -->
+    <!-- PLANOS -->
 
-<section class="slide">
+    <section id="planos">
 
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Uma coisa que eu gostei
+        <div class="section-title">
+            <small>Futuro próximo</small>
+            <h3>Planos e possibilidades</h3>
         </div>
 
-        <h2>
 
-            Você gosta de
-            <strong>atitudes.</strong>
+        <div class="plans">
 
-        </h2>
+            <div class="plan">
+                <h4>❤️ Primeiro encontro</h4>
 
-        <p class="destaque">
+                <p>
+                    Se encontrar no final de semana,
+                    jantar e depois assistir a um filme.
+                </p>
 
-            E talvez seja exatamente por isso
-            que eu esteja fazendo isso.
-
-        </p>
-
-        <p
-            class="texto"
-            style="margin-top:25px;">
-
-            Porque falar é fácil.
-
-            <br>
-
-            Difícil é fazer.
-
-            <br><br>
-
-            Então prefiro demonstrar aos poucos,
-            sem pressa e sem tentar criar expectativas
-            antes da hora.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     SLIDE 6
-================================================== -->
-
-<section class="slide">
-
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Uma possibilidade
-        </div>
-
-        <h2>
-
-            E se a gente
-            <strong>viajasse juntos?</strong>
-
-        </h2>
-
-        <p class="texto">
-
-            Você falou que viajar é um dos melhores
-            investimentos que alguém pode fazer.
-
-            <br><br>
-
-            Então já fica registrada aqui a ideia:
-
-            conhecer lugares novos,
-            experimentar coisas diferentes,
-            rir de coisas aleatórias
-            e voltar com histórias pra contar.
-
-        </p>
-
-
-        <div class="contador">
-
-
-            <div class="numero">
-
-                <strong>
-                    ∞
-                </strong>
-
-                <span>
-                    Possibilidades
+                <span class="status">
+                    Em planejamento
                 </span>
-
             </div>
 
 
-            <div class="numero">
+            <div class="plan">
+                <h4>🎢 Arca Parque</h4>
 
-                <strong>
-                    2
-                </strong>
+                <p>
+                    Ela já foi ao Arca Parque e disse que é muito lindo.
+                    Vocês conversaram sobre irem juntos.
+                </p>
 
-                <span>
-                    Pessoas
+                <span class="status">
+                    Ideia para marcar
                 </span>
-
             </div>
 
 
-            <div class="numero">
+            <div class="plan">
+                <h4>🎤 Show</h4>
 
-                <strong>
-                    1
-                </strong>
+                <p>
+                    Ela aceitou a ideia de ir a um show em dezembro.
+                    Também comentou que o aniversário dela é em abril.
+                </p>
 
-                <span>
-                    Ideia
+                <span class="status">
+                    Futuro
                 </span>
-
             </div>
 
 
-        </div>
+            <div class="plan">
+                <h4>✈️ Viajar juntos</h4>
 
-    </div>
+                <p>
+                    Surgiu uma conversa sobre viajar juntos
+                    caso tudo desse certo.
+                </p>
 
-</section>
+                <span class="status">
+                    Possibilidade
+                </span>
+            </div>
 
 
-<!-- ==================================================
-     SLIDE 7
-================================================== -->
+            <div class="plan">
+                <h4>🏠 Goiânia</h4>
 
-<section class="slide">
+                <p>
+                    Ela comentou várias vezes sobre você se ajeitar
+                    para morar em Goiânia.
+                </p>
 
-    <div class="conteudo">
+                <span class="status">
+                    Conversa futura
+                </span>
+            </div>
 
-        <div class="eyebrow">
-            Sobre nós
-        </div>
 
-        <h2>
+            <div class="plan">
+                <h4>💍 Aliança</h4>
 
-            Ainda estamos
-            <strong>começando.</strong>
+                <p>
+                    O assunto já apareceu entre vocês e ela informou
+                    que seu dedo é tamanho 18.
+                </p>
 
-        </h2>
-
-        <p class="texto">
-
-            E eu acho justamente isso bonito.
-
-            <br><br>
-
-            A gente ainda está descobrindo
-            o jeito um do outro,
-            conhecendo histórias,
-            gostos, manias e sonhos.
-
-            <br><br>
-
-            Não quero pular etapas.
-
-            Quero aproveitar cada uma delas.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     SLIDE 8
-================================================== -->
-
-<section class="slide">
-
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Uma confissão
-        </div>
-
-        <h2>
-
-            Eu estou gostando de
-            <strong>te conhecer.</strong>
-
-        </h2>
-
-        <p class="texto">
-
-            Não vou fingir que não existe interesse,
-            porque existe.
-
-            <br><br>
-
-            E também não quero esconder minhas intenções:
-
-            <strong>
-                eu estou procurando algo sério,
-                algo que possa se tornar duradouro.
-            </strong>
-
-            <br><br>
-
-            Quero conhecer você de verdade,
-            compartilhar momentos,
-            estar presente e construir algo
-            que seja bom para nós dois.
-
-            <br><br>
-
-            Mas acredito que as melhores histórias
-            começam justamente assim:
-
-            duas pessoas se conhecendo,
-            conversando e descobrindo
-            se existe reciprocidade.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     SLIDE 9 - CARTA
-================================================== -->
-
-<section class="slide">
-
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Uma pequena carta
-        </div>
-
-        <h2 translate="no">
-            Maria,
-        </h2>
-
-
-        <div class="carta">
-
-            Talvez você nem imaginasse que uma conversa
-            que começou de forma tão simples pudesse
-            chegar até aqui.
-
-            <br><br>
-
-            Eu ainda estou descobrindo muitas coisas
-            sobre você, mas já descobri uma que gosto:
-
-            você parece ser daquelas pessoas que gostam
-            de viver momentos e criar histórias.
-
-            <br><br>
-
-            E se depender de mim, eu quero ter a chance
-            de construir algumas histórias ao seu lado.
-
-            <br><br>
-
-            Sem pressa.
-
-            Sem atropelar nada.
-
-            Apenas deixando acontecer,
-            mas sempre com intenção.
-
-            <br><br>
-
-            Eu quero algo sério.
-
-            Algo verdadeiro.
-
-            Algo que, se os dois quiserem,
-            possa durar.
-
-            <br><br>
-
-            E talvez essa música esteja tocando
-            justamente para lembrar que algumas coisas
-            acontecem quando encontram o
-            <strong>dia, o lugar e a hora certos.</strong>
-
-            <div class="assinatura">
-
-                — Felipe 🤍
-
+                <span class="status">
+                    🤫 Surpresa
+                </span>
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ==================================================
-     SLIDE 10
-================================================== -->
+    <!-- NOTAS -->
 
-<section class="slide">
+    <section id="notas">
 
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            E agora...
+        <div class="section-title">
+            <small>Seu espaço</small>
+            <h3>Adicionar novas lembranças</h3>
+            <p>
+                Escreva qualquer coisa que acontecer daqui pra frente.
+                As notas ficam salvas no navegador.
+            </p>
         </div>
 
-        <h2>
 
-            Uma pergunta.
+        <div class="editor">
 
-        </h2>
+            <input
+                type="text"
+                id="noteTitle"
+                placeholder="Título da lembrança..."
+            >
 
-        <p class="destaque">
+            <textarea
+                id="noteText"
+                placeholder="Escreva aqui o que aconteceu..."
+            ></textarea>
 
-            Você está preparada
-            para descobrir
-            <span>onde isso pode chegar?</span>
+            <button class="btn" onclick="saveNote()">
+                + Salvar lembrança
+            </button>
 
-        </p>
+            <div class="saved-notes" id="savedNotes"></div>
 
-        <button
-            class="btn pulsar"
-            onclick="surpresa()">
-
-            Descobrir ✨
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     SLIDE 11 - FINAL
-================================================== -->
-
-<section class="slide">
-
-    <div class="conteudo">
-
-        <div class="eyebrow">
-            Fim?
         </div>
 
-        <h2>
-
-            Acho que não.
-
-        </h2>
-
-        <p class="destaque">
-
-            Isso aqui é só o
-            <strong>começo.</strong>
-
-        </p>
-
-        <p
-            class="texto"
-            style="margin-top:30px;">
-
-            Agora você já sabe um pouco mais
-            sobre o que eu penso.
-
-            <br><br>
-
-            O resto...
-
-            a gente descobre pessoalmente. 😉
-
-        </p>
+    </section>
 
 
-        <button
-            class="btn"
-            onclick="reiniciar()">
-
-            Ver novamente ↻
-
-        </button>
-
-    </div>
-
-</section>
+</main>
 
 
-<!-- ==================================================
-     NAVEGAÇÃO
-================================================== -->
+<footer>
 
-<div class="navegacao">
+    Feito para não deixar pequenos detalhes importantes serem esquecidos. ❤️
 
-    <button
-        class="nav-btn"
-        onclick="anterior()">
-
-        ←
-
-    </button>
-
-
-    <div id="contadorSlide">
-        1 / 11
-    </div>
-
-
-    <button
-        class="nav-btn"
-        onclick="proximo()">
-
-        →
-
-    </button>
-
-</div>
-
-
-</div>
-
+</footer>
 
 
 <script>
 
-/* ==================================================
-   CONFIGURAÇÕES
-================================================== */
-
-const slides =
-    document.querySelectorAll(".slide");
-
-let atual = 0;
-
-const musica =
-    document.getElementById("musica");
-
-let musicaIniciada = false;
-
-
-/* ==================================================
-   TELA DE ENTRADA
-================================================== */
-
-const entrada =
-    document.getElementById("entrada");
-
-const btnEntrar =
-    document.getElementById("btnEntrar");
-
-const site =
-    document.getElementById("site");
-
-
-btnEntrar.addEventListener(
-    "click",
-    function(){
-
-        entrada.style.opacity = "0";
-
-        setTimeout(
-            function(){
-
-                entrada.style.display = "none";
-
-                site.style.display = "block";
-
-                criarIndicadores();
-
-                atualizar();
-
-                criarCoracoes();
-
-            },
-            900
-        );
-
-    }
-);
-
-
-/* ==================================================
-   INICIAR MÚSICA
-================================================== */
-
-function iniciarMusica(){
-
-    if(musicaIniciada){
-
-        return;
-
-    }
-
-    musicaIniciada = true;
-
-    musica.volume = 0.65;
-
-    const tentativa =
-        musica.play();
-
-    if(tentativa !== undefined){
-
-        tentativa.catch(
-            function(){
-
-                musicaIniciada = false;
-
-                console.log(
-                    "Não foi possível iniciar a música."
-                );
-
-            }
-        );
-
-    }
-
-}
-
-
-/* ==================================================
-   BOTÃO DA MÚSICA
-================================================== */
-
-function iniciarMusicaEProximo(){
-
-    iniciarMusica();
-
-    proximo();
-
-}
-
-
-/* ==================================================
-   CRIAR INDICADORES
-================================================== */
-
-function criarIndicadores(){
-
-    const container =
-        document.getElementById("indicadores");
-
-    container.innerHTML = "";
-
-    slides.forEach(
-        function(_, index){
-
-            const indicador =
-                document.createElement("div");
-
-            indicador.className =
-                "indicador";
-
-            if(index === 0){
-
-                indicador.classList.add(
-                    "ativo"
-                );
-
-            }
-
-            container.appendChild(
-                indicador
-            );
-
-        }
-    );
-
-}
-
-
-/* ==================================================
-   ATUALIZAR SLIDE
-================================================== */
-
-function atualizar(){
-
-    slides.forEach(
-        function(slide,index){
-
-            slide.classList.remove(
-                "ativo"
-            );
-
-            if(index === atual){
-
-                slide.classList.add(
-                    "ativo"
-                );
-
-            }
-
-        }
-    );
-
-
-    const indicadores =
-        document.querySelectorAll(
-            ".indicador"
-        );
-
-
-    indicadores.forEach(
-        function(indicador,index){
-
-            indicador.classList.toggle(
-                "ativo",
-                index === atual
-            );
-
-        }
-    );
-
-
-    document.getElementById(
-        "contadorSlide"
-    ).innerText =
-
-        `${atual + 1} / ${slides.length}`;
-
-}
-
-
-/* ==================================================
-   PRÓXIMO
-================================================== */
-
-function proximo(){
-
-    if(atual < slides.length - 1){
-
-        atual++;
-
-        atualizar();
-
-    }
-
-}
-
-
-/* ==================================================
-   ANTERIOR
-================================================== */
-
-function anterior(){
-
-    if(atual > 0){
-
-        atual--;
-
-        atualizar();
-
-    }
-
-}
-
-
-/* ==================================================
-   TECLADO
-================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        if(e.key === "ArrowRight"){
-
-            proximo();
-
-        }
-
-        if(e.key === "ArrowLeft"){
-
-            anterior();
-
-        }
-
-    }
-);
-
-
-/* ==================================================
-   SWIPE NO CELULAR
-================================================== */
-
-let inicioX = 0;
-
-
-document.addEventListener(
-    "touchstart",
-    function(e){
-
-        inicioX =
-            e.touches[0].clientX;
-
-    }
-);
-
-
-document.addEventListener(
-    "touchend",
-    function(e){
-
-        const fimX =
-            e.changedTouches[0].clientX;
-
-        const distancia =
-            fimX - inicioX;
-
-        if(Math.abs(distancia) > 70){
-
-            if(distancia < 0){
-
-                proximo();
-
-            }
-            else{
-
-                anterior();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* ==================================================
-   CORAÇÕES AUTOMÁTICOS
-================================================== */
-
-function criarCoracoes(){
-
-    setInterval(
-        function(){
-
-            const coracao =
-                document.createElement("div");
-
-            coracao.className =
-                "coracao";
-
-            const simbolos = [
-
-                "♡",
-                "♥",
-                "✨",
-                "🤍"
-
-            ];
-
-            coracao.innerText =
-                simbolos[
-                    Math.floor(
-                        Math.random() *
-                        simbolos.length
-                    )
-                ];
-
-            coracao.style.left =
-                Math.random() * 100 + "%";
-
-            coracao.style.animationDuration =
-                (5 + Math.random() * 5)
-                + "s";
-
-            coracao.style.fontSize =
-                (12 + Math.random() * 18)
-                + "px";
-
-            document.body.appendChild(
-                coracao
-            );
-
-            setTimeout(
-                function(){
-
-                    coracao.remove();
-
-                },
-                10000
-            );
-
-        },
-        800
-    );
-
-}
-
-
-/* ==================================================
-   SURPRESA
-================================================== */
-
-function surpresa(){
-
-    for(
-        let i = 0;
-        i < 50;
-        i++
-    ){
-
-        setTimeout(
-            function(){
-
-                const coracao =
-                    document.createElement(
-                        "div"
-                    );
-
-                coracao.className =
-                    "coracao";
-
-                coracao.innerText =
-                    "♥";
-
-                coracao.style.left =
-                    Math.random() *
-                    100 +
-                    "%";
-
-                coracao.style.animationDuration =
-                    (2 +
-                    Math.random() * 3)
-                    + "s";
-
-                coracao.style.fontSize =
-                    (18 +
-                    Math.random() * 25)
-                    + "px";
-
-                document.body.appendChild(
-                    coracao
-                );
-
-                setTimeout(
-                    function(){
-
-                        coracao.remove();
-
-                    },
-                    6000
-                );
-
-            },
-            i * 50
-        );
-
-    }
-
-
-    setTimeout(
-        function(){
-
-            proximo();
-
-        },
-        1000
-    );
-
-}
-
-
-/* ==================================================
-   REINICIAR
-================================================== */
-
-function reiniciar(){
-
-    atual = 0;
-
-    atualizar();
-
     /*
-       A música NÃO é pausada.
-       Ela continua tocando mesmo
-       quando o usuário volta para o início.
+        SISTEMA DE NOTAS
+
+        Tudo fica salvo no localStorage do navegador.
+        Não precisa de banco de dados.
     */
 
-}
+    let notes = JSON.parse(
+        localStorage.getItem("mariaEduardaNotas") || "[]"
+    );
 
 
-/* ==================================================
-   GARANTIR QUE A MÚSICA CONTINUE
-================================================== */
+    function renderNotes() {
 
-document.addEventListener(
-    "visibilitychange",
-    function(){
+        const container = document.getElementById("savedNotes");
 
-        if(
-            !document.hidden &&
-            musicaIniciada &&
-            musica.paused
-        ){
+        container.innerHTML = "";
 
-            musica.play().catch(
-                function(){}
-            );
+        if (notes.length === 0) {
 
+            container.innerHTML = `
+                <div class="saved-note">
+                    <p>Nenhuma lembrança nova adicionada ainda.</p>
+                </div>
+            `;
+
+            return;
         }
 
+
+        notes.forEach((note, index) => {
+
+            const div = document.createElement("div");
+
+            div.className = "saved-note";
+
+            div.innerHTML = `
+                <strong>${escapeHTML(note.title)}</strong>
+
+                <p>${escapeHTML(note.text)}</p>
+
+                <button
+                    class="delete"
+                    onclick="deleteNote(${index})"
+                >
+                    Excluir
+                </button>
+            `;
+
+            container.appendChild(div);
+
+        });
+
     }
-);
+
+
+    function saveNote() {
+
+        const title =
+            document.getElementById("noteTitle").value.trim();
+
+        const text =
+            document.getElementById("noteText").value.trim();
+
+
+        if (!title && !text) {
+
+            alert("Escreva alguma coisa primeiro ❤️");
+
+            return;
+        }
+
+
+        notes.unshift({
+            title: title || "Nova lembrança",
+            text: text || "Sem descrição.",
+            date: new Date().toLocaleString("pt-BR")
+        });
+
+
+        localStorage.setItem(
+            "mariaEduardaNotas",
+            JSON.stringify(notes)
+        );
+
+
+        document.getElementById("noteTitle").value = "";
+        document.getElementById("noteText").value = "";
+
+
+        renderNotes();
+
+    }
+
+
+    function deleteNote(index) {
+
+        if (!confirm("Excluir essa lembrança?")) {
+            return;
+        }
+
+
+        notes.splice(index, 1);
+
+
+        localStorage.setItem(
+            "mariaEduardaNotas",
+            JSON.stringify(notes)
+        );
+
+
+        renderNotes();
+
+    }
+
+
+    function escapeHTML(text) {
+
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    renderNotes();
 
 </script>
 
-
 </body>
-
 </html>
