@@ -1650,108 +1650,286 @@
 </section>
 
 
-<!-- DATA DO PEDIDO -->
+<!-- =========================================================
+     💍 DATA DO PEDIDO — SISTEMA DE 2 SENHAS
+========================================================= -->
 
 <section id="pedido">
 
     <div class="section-title">
         <small>Um segredo guardado para o futuro</small>
+
         <h3>💍 Data do pedido</h3>
+
         <p>
             Algumas coisas são melhores quando esperadas.
-            Esta é uma delas.
+            Essa é uma delas.
         </p>
     </div>
 
 
-    <div class="proposal-card">
+    <div class="proposal-card" id="proposalCard">
 
+        <!-- brilho de fundo -->
         <div class="proposal-glow"></div>
+
+        <!-- partículas -->
+        <div class="particles" id="particles"></div>
+
+
+        <!-- ANEL -->
 
         <div class="ring-animation">
             💍
         </div>
 
+
         <span class="proposal-label">
             UMA DATA ESPECIAL
         </span>
+
 
         <h2>
             O dia em que tudo pode mudar
         </h2>
 
+
         <p class="proposal-text">
-            A data está aqui, mas foi escondida de propósito.
-            Só existe uma maneira de descobrir.
+            Existe uma data guardada aqui.
+            Mas ela foi escondida em duas etapas.
         </p>
 
 
-        <!-- DATA ESCONDIDA -->
+        <!-- =================================================
+             PRIMEIRA ETAPA
+             SENHA: Amor
+        ================================================= -->
 
-        <div class="secret-date" id="secretDate">
+        <div class="date-stage stage-month" id="monthStage">
 
-            <span class="date-blur">
-                20 DE NOVEMBRO DE 2026
+            <div class="stage-number">
+                01
+            </div>
+
+            <span class="stage-label">
+                PRIMEIRO SEGREDO
             </span>
+
+            <h3>
+                Quando?
+            </h3>
+
+            <div class="secret-month" id="secretMonth">
+
+                <span>
+                    NOVEMBRO DE 2026
+                </span>
+
+            </div>
+
+
+            <div class="lock-area">
+
+                <div class="lock-icon" id="monthLock">
+                    🔒
+                </div>
+
+                <p id="monthMessage">
+                    O mês e o ano estão escondidos.
+                </p>
+
+
+                <button
+                    class="unlock-button"
+                    id="monthButton"
+                    onclick="openMonthPassword()"
+                >
+                    ✨ Descobrir o mês
+                </button>
+
+
+                <!-- SENHA MÊS -->
+
+                <div
+                    class="password-box"
+                    id="monthPasswordBox"
+                >
+
+                    <p>
+                        Existe uma palavra que abre o primeiro segredo.
+                    </p>
+
+                    <div class="password-input-area">
+
+                        <input
+                            type="password"
+                            id="monthPassword"
+                            placeholder="Digite a senha..."
+                            autocomplete="off"
+                            onkeydown="monthEnter(event)"
+                        >
+
+                        <button onclick="unlockMonth()">
+                            Revelar
+                        </button>
+
+                    </div>
+
+
+                    <span
+                        class="password-error"
+                        id="monthError"
+                    >
+                        Senha incorreta ❤️
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="lock-area">
+        <!-- LINHA ENTRE AS ETAPAS -->
 
-            <div class="lock-icon" id="lockIcon">
-                🔒
+        <div
+            class="secret-divider"
+            id="secretDivider"
+        >
+
+            <span></span>
+
+            <div>✦</div>
+
+            <span></span>
+
+        </div>
+
+
+        <!-- =================================================
+             SEGUNDA ETAPA
+             SENHA: orquesta
+        ================================================= -->
+
+        <div
+            class="date-stage stage-full locked-stage"
+            id="fullStage"
+        >
+
+            <div class="stage-number">
+                02
             </div>
 
-            <p class="lock-message" id="lockMessage">
-                A data está protegida.
-            </p>
+            <span class="stage-label">
+                SEGUNDO SEGREDO
+            </span>
+
+            <h3>
+                E qual é o dia?
+            </h3>
 
 
-            <button
-                class="unlock-button"
-                onclick="openPasswordBox()"
-                id="unlockButton"
-            >
-                🔐 Revelar a data
-            </button>
-
-
-            <!-- CAIXA DE SENHA -->
+            <!-- DATA COMPLETA -->
 
             <div
-                class="password-box"
-                id="passwordBox"
+                class="secret-full-date"
+                id="secretFullDate"
             >
 
-                <p>
-                    Digite a senha para descobrir a data:
-                </p>
-
-                <div class="password-input-area">
-
-                    <input
-                        type="password"
-                        id="proposalPassword"
-                        placeholder="Digite a senha..."
-                        autocomplete="off"
-                        onkeydown="passwordEnter(event)"
-                    >
-
-                    <button onclick="unlockDate()">
-                        Entrar
-                    </button>
-
-                </div>
-
-                <span
-                    class="password-error"
-                    id="passwordError"
-                >
-                    Senha incorreta ❤️
+                <span>
+                    20 DE NOVEMBRO DE 2026
                 </span>
 
             </div>
+
+
+            <div class="lock-area">
+
+                <div
+                    class="lock-icon"
+                    id="fullLock"
+                >
+                    🔒
+                </div>
+
+
+                <p id="fullMessage">
+                    O dia está esperando pela segunda chave.
+                </p>
+
+
+                <button
+                    class="unlock-button"
+                    id="fullButton"
+                    onclick="openFullPassword()"
+                    disabled
+                >
+                    🔐 Descobrir o dia
+                </button>
+
+
+                <!-- SENHA DATA COMPLETA -->
+
+                <div
+                    class="password-box"
+                    id="fullPasswordBox"
+                >
+
+                    <p>
+                        Agora falta apenas a última palavra.
+                    </p>
+
+
+                    <div class="password-input-area">
+
+                        <input
+                            type="password"
+                            id="fullPassword"
+                            placeholder="Digite a segunda senha..."
+                            autocomplete="off"
+                            onkeydown="fullEnter(event)"
+                        >
+
+
+                        <button onclick="unlockFullDate()">
+                            Abrir
+                        </button>
+
+                    </div>
+
+
+                    <span
+                        class="password-error"
+                        id="fullError"
+                    >
+                        Ainda não é essa... ❤️
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MENSAGEM FINAL -->
+
+        <div
+            class="final-message"
+            id="finalMessage"
+        >
+
+            <div class="final-hearts">
+                ❤️ 💍 ❤️
+            </div>
+
+            <strong>
+                Então é esse o dia.
+            </strong>
+
+            <p>
+                Guardado aqui para não esquecer.
+            </p>
 
         </div>
 
@@ -1760,79 +1938,141 @@
 </section>
 
 
+
 <style>
 
-/* ================================
+/* =========================================================
    DATA DO PEDIDO
-================================ */
+========================================================= */
 
 #pedido {
-    padding: 90px 20px;
+
     position: relative;
+
+    padding: 90px 20px;
+
     overflow: hidden;
+
 }
 
 
-/* CARD */
+/* =========================================================
+   CARD
+========================================================= */
 
 .proposal-card {
+
     position: relative;
-    max-width: 720px;
+
+    max-width: 760px;
+
     margin: 40px auto 0;
+
     padding: 55px 35px;
+
     text-align: center;
 
-    border-radius: 28px;
+    border-radius: 30px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.025)
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
         );
 
-    border: 1px solid rgba(255,255,255,0.12);
+    border:
+        1px solid rgba(255,255,255,.12);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,0.35);
+        0 30px 100px rgba(0,0,0,.35);
 
     overflow: hidden;
 
-    animation: proposalAppear 1.2s ease;
+    animation:
+        proposalAppear 1.1s ease;
+
 }
 
 
-/* BRILHO DO CARD */
+/* =========================================================
+   BRILHO
+========================================================= */
 
 .proposal-glow {
+
     position: absolute;
 
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
 
-    top: -180px;
+    top: -250px;
     left: 50%;
 
     transform: translateX(-50%);
 
-    background: rgba(255, 105, 180, 0.20);
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,100,180,.25),
+            transparent 70%
+        );
 
-    filter: blur(90px);
+    filter: blur(35px);
 
-    border-radius: 50%;
-
-    animation: glowMove 5s ease-in-out infinite alternate;
+    animation:
+        glowMove 6s ease-in-out infinite alternate;
 
     pointer-events: none;
+
 }
 
 
-/* ANIMAÇÃO DO ANEL */
+/* =========================================================
+   PARTÍCULAS
+========================================================= */
+
+.particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+}
+
+
+.particle {
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0;
+
+    animation:
+        particleFloat linear infinite;
+
+}
+
+
+/* =========================================================
+   ANEL
+========================================================= */
 
 .ring-animation {
+
     position: relative;
 
-    font-size: 58px;
+    font-size: 62px;
 
     margin-bottom: 18px;
 
@@ -1840,218 +2080,453 @@
         ringFloat 3s ease-in-out infinite,
         ringGlow 2s ease-in-out infinite alternate;
 
-    filter:
-        drop-shadow(
-            0 0 18px rgba(255,255,255,0.45)
-        );
 }
 
 
-/* LABEL */
+/* =========================================================
+   LABEL
+========================================================= */
 
 .proposal-label {
+
     display: inline-block;
 
-    font-size: 11px;
-    letter-spacing: 3px;
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
     font-weight: 700;
 
-    opacity: 0.55;
+    opacity: .5;
 
     margin-bottom: 12px;
+
 }
 
 
-/* TITULO */
+/* =========================================================
+   TITULO
+========================================================= */
 
-.proposal-card h2 {
+.proposal-card > h2 {
+
     position: relative;
 
     margin: 5px 0 15px;
 
-    font-size: clamp(25px, 5vw, 38px);
+    font-size:
+        clamp(25px, 5vw, 40px);
 
-    font-weight: 700;
 }
 
 
-/* TEXTO */
+/* =========================================================
+   TEXTO
+========================================================= */
 
 .proposal-text {
-    position: relative;
 
-    max-width: 520px;
+    max-width: 540px;
 
-    margin: 0 auto 35px;
+    margin: 0 auto 45px;
 
     line-height: 1.7;
 
-    opacity: 0.72;
+    opacity: .65;
+
 }
 
 
-/* DATA */
+/* =========================================================
+   ETAPAS
+========================================================= */
 
-.secret-date {
+.date-stage {
+
     position: relative;
 
-    margin: 30px auto;
+    padding: 35px 25px;
 
-    padding: 25px 20px;
+    border-radius: 24px;
 
-    max-width: 500px;
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    transition:
+        .8s ease;
+
+}
+
+
+.date-stage:hover {
+
+    border-color:
+        rgba(255,255,255,.16);
+
+}
+
+
+/* =========================================================
+   NUMERO
+========================================================= */
+
+.stage-number {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: .35;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.stage-label {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .5;
+
+}
+
+
+/* =========================================================
+   TITULO DA ETAPA
+========================================================= */
+
+.date-stage h3 {
+
+    margin:
+        8px 0 25px;
+
+    font-size: 25px;
+
+}
+
+
+/* =========================================================
+   MES
+========================================================= */
+
+.secret-month {
+
+    position: relative;
+
+    margin: 25px auto;
+
+    padding: 24px 15px;
 
     border-radius: 18px;
 
     background:
-        rgba(255,255,255,0.045);
+        rgba(0,0,0,.12);
 
     border:
-        1px solid rgba(255,255,255,0.10);
+        1px solid rgba(255,255,255,.08);
 
     overflow: hidden;
 
-    transition:
-        1.2s ease;
 }
 
 
-/* DATA BORRADA */
+.secret-month span {
 
-.date-blur {
     display: block;
 
-    font-size: clamp(25px, 6vw, 42px);
+    font-size:
+        clamp(25px, 6vw, 43px);
 
     font-weight: 800;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
-    color: rgba(255,255,255,0.9);
+    filter: blur(14px);
 
-    filter: blur(13px);
+    opacity: .75;
 
-    user-select: none;
-
-    transform: scale(1.05);
+    transform:
+        scale(1.08);
 
     transition:
-        filter 1.5s ease,
-        transform 1.5s ease,
-        opacity 1.5s ease;
+        1.5s ease;
+
 }
 
 
-/* DATA REVELADA */
+.secret-month.revealed {
 
-.secret-date.revealed .date-blur {
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.05),
+            rgba(255,105,180,.12),
+            rgba(255,255,255,.05)
+        );
+
+    box-shadow:
+        0 0 60px rgba(255,105,180,.15);
+
+}
+
+
+.secret-month.revealed span {
+
     filter: blur(0);
-
-    transform: scale(1);
 
     opacity: 1;
 
+    transform:
+        scale(1);
+
     animation:
-        dateReveal 1.5s ease;
+        monthReveal 1.7s cubic-bezier(.16,1,.3,1);
+
 }
 
 
-/* CADEADO */
+/* =========================================================
+   DATA COMPLETA
+========================================================= */
 
-.lock-area {
+.secret-full-date {
+
     position: relative;
 
-    margin-top: 25px;
+    margin: 25px auto;
+
+    padding: 25px 15px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(0,0,0,.12);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    overflow: hidden;
+
 }
 
 
+.secret-full-date span {
+
+    display: block;
+
+    font-size:
+        clamp(23px, 5.5vw, 40px);
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    filter: blur(14px);
+
+    opacity: .55;
+
+    transform:
+        scale(1.06);
+
+    transition:
+        1.5s ease;
+
+}
+
+
+.secret-full-date.revealed {
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.04)
+        );
+
+    box-shadow:
+        0 0 80px rgba(255,255,255,.12);
+
+}
+
+
+.secret-full-date.revealed span {
+
+    filter: blur(0);
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    animation:
+        fullDateReveal 1.8s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+/* =========================================================
+   ETAPA BLOQUEADA
+========================================================= */
+
+.locked-stage {
+
+    opacity: .55;
+
+    transform:
+        scale(.97);
+
+    filter:
+        saturate(.5);
+
+    transition:
+        1s ease;
+
+}
+
+
+.locked-stage.unlocked {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    filter:
+        saturate(1);
+
+    box-shadow:
+        0 0 80px rgba(255,105,180,.08);
+
+}
+
+
+/* =========================================================
+   CADEADO
+========================================================= */
+
 .lock-icon {
+
     font-size: 30px;
 
     margin-bottom: 8px;
 
     animation:
         lockPulse 2s ease-in-out infinite;
+
 }
 
 
 .lock-message {
-    opacity: 0.6;
+
+    opacity: .6;
 
     font-size: 14px;
 
     margin-bottom: 18px;
+
 }
 
 
-/* BOTÃO */
+/* =========================================================
+   BOTAO
+========================================================= */
 
 .unlock-button {
+
     border: none;
 
-    padding: 13px 23px;
+    padding: 13px 24px;
 
     border-radius: 999px;
 
     background:
-        rgba(255,255,255,0.10);
+        rgba(255,255,255,.09);
 
     color: inherit;
 
     border:
-        1px solid rgba(255,255,255,0.15);
+        1px solid rgba(255,255,255,.13);
 
     cursor: pointer;
 
     font-weight: 600;
 
     transition:
-        0.3s ease;
+        .3s ease;
+
 }
 
 
-.unlock-button:hover {
-    transform: translateY(-2px);
+.unlock-button:hover:not(:disabled) {
+
+    transform:
+        translateY(-3px);
 
     background:
-        rgba(255,255,255,0.17);
+        rgba(255,255,255,.17);
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.25);
+        0 12px 35px rgba(0,0,0,.25);
+
 }
 
 
-/* CAIXA DE SENHA */
+.unlock-button:disabled {
+
+    cursor: not-allowed;
+
+    opacity: .35;
+
+}
+
+
+/* =========================================================
+   SENHA
+========================================================= */
 
 .password-box {
-    max-width: 430px;
+
+    max-width: 440px;
 
     margin: 25px auto 0;
 
-    padding: 22px;
+    padding: 23px;
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     background:
-        rgba(0,0,0,0.18);
+        rgba(0,0,0,.18);
 
     border:
-        1px solid rgba(255,255,255,0.10);
+        1px solid rgba(255,255,255,.09);
 
     opacity: 0;
 
     transform:
         translateY(15px)
-        scale(0.97);
+        scale(.96);
 
     pointer-events: none;
 
     transition:
-        0.4s ease;
+        .45s ease;
+
 }
 
 
 .password-box.active {
+
     opacity: 1;
 
     transform:
@@ -2059,28 +2534,36 @@
         scale(1);
 
     pointer-events: auto;
+
 }
 
 
 .password-box p {
+
     margin-top: 0;
 
-    opacity: 0.7;
-
     font-size: 14px;
+
+    opacity: .65;
+
 }
 
 
-/* INPUT */
+/* =========================================================
+   INPUT
+========================================================= */
 
 .password-input-area {
+
     display: flex;
 
     gap: 8px;
+
 }
 
 
 .password-input-area input {
+
     flex: 1;
 
     min-width: 0;
@@ -2090,32 +2573,37 @@
     border-radius: 12px;
 
     border:
-        1px solid rgba(255,255,255,0.12);
+        1px solid rgba(255,255,255,.12);
 
     background:
-        rgba(255,255,255,0.06);
+        rgba(255,255,255,.05);
 
     color: inherit;
 
     outline: none;
 
     font-size: 14px;
+
 }
 
 
 .password-input-area input:focus {
+
     border-color:
-        rgba(255,255,255,0.30);
+        rgba(255,255,255,.3);
 
     box-shadow:
-        0 0 0 3px rgba(255,255,255,0.04);
+        0 0 0 3px rgba(255,255,255,.04);
+
 }
 
 
 .password-input-area button {
+
     border: none;
 
-    padding: 0 18px;
+    padding:
+        0 18px;
 
     border-radius: 12px;
 
@@ -2125,21 +2613,27 @@
 
     color: #222;
 
-    background: #fff;
+    background: white;
 
-    transition:
-        0.25s ease;
+    transition: .25s ease;
+
 }
 
 
 .password-input-area button:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
+
 }
 
 
-/* ERRO */
+/* =========================================================
+   ERRO
+========================================================= */
 
 .password-error {
+
     display: block;
 
     color: #ff8fa3;
@@ -2150,52 +2644,163 @@
 
     opacity: 0;
 
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
-    transition: 0.3s ease;
 }
 
 
 .password-error.show {
+
     opacity: 1;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 
     animation:
-        shake 0.4s ease;
+        shake .45s ease;
+
 }
 
 
-/* QUANDO DESBLOQUEAR */
+/* =========================================================
+   DIVISOR
+========================================================= */
 
-.proposal-card.unlocked {
-    border-color:
-        rgba(255,255,255,0.25);
+.secret-divider {
 
-    box-shadow:
-        0 25px 100px rgba(255,105,180,0.12);
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 28px 0;
+
+    opacity: .35;
+
 }
 
 
-.proposal-card.unlocked .lock-icon {
-    animation: unlockAnimation 0.8s ease forwards;
+.secret-divider span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,.2);
+
 }
 
 
-/* ================================
+.secret-divider div {
+
+    animation:
+        starRotate 4s linear infinite;
+
+}
+
+
+/* =========================================================
+   MENSAGEM FINAL
+========================================================= */
+
+.final-message {
+
+    margin-top: 30px;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,105,180,.08),
+            rgba(255,255,255,.04)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px)
+        scale(.95);
+
+    pointer-events: none;
+
+}
+
+
+.final-message.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    animation:
+        finalAppear 1.5s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+.final-hearts {
+
+    font-size: 25px;
+
+    margin-bottom: 12px;
+
+    animation:
+        heartBeat 1.4s ease-in-out infinite;
+
+}
+
+
+.final-message strong {
+
+    display: block;
+
+    font-size: 22px;
+
+}
+
+
+.final-message p {
+
+    opacity: .6;
+
+    margin-bottom: 0;
+
+}
+
+
+/* =========================================================
    ANIMAÇÕES
-================================ */
+========================================================= */
 
 @keyframes proposalAppear {
 
     from {
+
         opacity: 0;
-        transform: translateY(30px);
+
+        transform:
+            translateY(35px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
@@ -2204,11 +2809,19 @@
 @keyframes ringFloat {
 
     0%,100% {
-        transform: translateY(0) rotate(-3deg);
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+
     }
 
     50% {
-        transform: translateY(-10px) rotate(3deg);
+
+        transform:
+            translateY(-12px)
+            rotate(3deg);
+
     }
 
 }
@@ -2217,17 +2830,21 @@
 @keyframes ringGlow {
 
     from {
+
         filter:
             drop-shadow(
-                0 0 10px rgba(255,255,255,0.25)
+                0 0 8px rgba(255,255,255,.2)
             );
+
     }
 
     to {
+
         filter:
             drop-shadow(
-                0 0 30px rgba(255,255,255,0.65)
+                0 0 30px rgba(255,255,255,.7)
             );
+
     }
 
 }
@@ -2236,15 +2853,19 @@
 @keyframes glowMove {
 
     from {
+
         transform:
             translateX(-50%)
             scale(1);
+
     }
 
     to {
+
         transform:
             translateX(-50%)
-            scale(1.25);
+            scale(1.35);
+
     }
 
 }
@@ -2253,52 +2874,111 @@
 @keyframes lockPulse {
 
     0%,100% {
-        transform: scale(1);
+
+        transform:
+            scale(1);
+
     }
 
     50% {
-        transform: scale(1.08);
+
+        transform:
+            scale(1.1);
+
     }
 
 }
 
 
-@keyframes dateReveal {
+@keyframes monthReveal {
 
     0% {
-        filter: blur(13px);
-        transform: scale(1.08);
+
+        filter:
+            blur(18px);
+
+        opacity: 0;
+
+        transform:
+            scale(1.25);
+
+        letter-spacing: 15px;
+
     }
 
-    60% {
-        filter: blur(2px);
-        transform: scale(1.02);
+    45% {
+
+        filter:
+            blur(6px);
+
+        opacity: .7;
+
+    }
+
+    75% {
+
+        filter:
+            blur(1px);
+
     }
 
     100% {
-        filter: blur(0);
-        transform: scale(1);
+
+        filter:
+            blur(0);
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+        letter-spacing: 2px;
+
     }
 
 }
 
 
-@keyframes unlockAnimation {
+@keyframes fullDateReveal {
 
     0% {
-        transform: rotate(0) scale(1);
+
+        filter:
+            blur(18px);
+
+        opacity: 0;
+
+        transform:
+            scale(1.2);
+
     }
 
-    40% {
-        transform: rotate(-15deg) scale(1.2);
+    35% {
+
+        filter:
+            blur(8px);
+
+        opacity: .5;
+
     }
 
     70% {
-        transform: rotate(10deg) scale(1.1);
+
+        filter:
+            blur(2px);
+
     }
 
     100% {
-        transform: rotate(0) scale(1);
+
+        filter:
+            blur(0);
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
     }
 
 }
@@ -2307,38 +2987,173 @@
 @keyframes shake {
 
     0%,100% {
-        transform: translateX(0);
+
+        transform:
+            translateX(0);
+
     }
 
     25% {
-        transform: translateX(-7px);
+
+        transform:
+            translateX(-7px);
+
     }
 
     75% {
-        transform: translateX(7px);
+
+        transform:
+            translateX(7px);
+
     }
 
 }
 
 
-/* CELULAR */
+@keyframes starRotate {
+
+    from {
+
+        transform:
+            rotate(0deg)
+            scale(1);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg)
+            scale(1.15);
+
+    }
+
+}
+
+
+@keyframes finalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes heartBeat {
+
+    0%,100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.5);
+
+    }
+
+    20% {
+
+        opacity: .5;
+
+    }
+
+    80% {
+
+        opacity: .25;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-350px)
+            scale(1.2);
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
 
 @media (max-width: 600px) {
 
     .proposal-card {
-        padding: 40px 20px;
+
+        padding:
+            40px 18px;
+
     }
+
+
+    .date-stage {
+
+        padding:
+            30px 15px;
+
+    }
+
 
     .password-input-area {
+
         flex-direction: column;
+
     }
+
 
     .password-input-area button {
-        padding: 13px;
+
+        padding:
+            13px;
+
     }
 
-    .date-blur {
+
+    .secret-month span,
+    .secret-full-date span {
+
         letter-spacing: 1px;
+
     }
 
 }
@@ -2346,132 +3161,188 @@
 </style>
 
 
+
 <script>
 
-/* ==========================================
-   DATA DO PEDIDO
-========================================== */
+/* =========================================================
+   CONFIGURAÇÃO DAS SENHAS
+========================================================= */
+
+const monthPassword = "Amor";
+
+const fullDatePassword = "orquesta";
 
 
-/*
-    IMPORTANTE:
+/* =========================================================
+   CRIAR PARTÍCULAS
+========================================================= */
 
-    A senha é "Orquestra".
+function createParticles() {
 
-    Como isso é HTML/JavaScript puro,
-    não existe maneira de esconder
-    completamente essa senha do código.
+    const container =
+        document.getElementById("particles");
 
-    Os bloqueios abaixo apenas dificultam
-    o acesso casual.
-*/
+    if (!container) return;
 
 
-const proposalPassword = "Orquestra";
+    for (let i = 0; i < 35; i++) {
 
+        const particle =
+            document.createElement("span");
 
-/*
-    ABRIR CAMPO DA SENHA
-*/
+        particle.className = "particle";
 
-function openPasswordBox() {
+        particle.style.left =
+            Math.random() * 100 + "%";
 
-    const box =
-        document.getElementById("passwordBox");
+        particle.style.top =
+            60 + Math.random() * 40 + "%";
 
-    const input =
-        document.getElementById("proposalPassword");
+        particle.style.animationDuration =
+            (4 + Math.random() * 7) + "s";
 
-    box.classList.add("active");
+        particle.style.animationDelay =
+            Math.random() * 6 + "s";
 
-    setTimeout(() => {
-        input.focus();
-    }, 300);
+        particle.style.width =
+            (2 + Math.random() * 4) + "px";
 
-}
+        particle.style.height =
+            particle.style.width;
 
-
-/*
-    PERMITIR ENTER
-*/
-
-function passwordEnter(event) {
-
-    if (event.key === "Enter") {
-
-        unlockDate();
+        container.appendChild(particle);
 
     }
 
 }
 
 
-/*
-    VERIFICAR SENHA
-*/
+createParticles();
 
-function unlockDate() {
+
+/* =========================================================
+   PRIMEIRA SENHA
+   AMOR
+========================================================= */
+
+function openMonthPassword() {
+
+    const box =
+        document.getElementById(
+            "monthPasswordBox"
+        );
 
     const input =
-        document.getElementById("proposalPassword");
+        document.getElementById(
+            "monthPassword"
+        );
+
+    box.classList.add("active");
+
+    setTimeout(() => {
+
+        input.focus();
+
+    }, 300);
+
+}
+
+
+/* =========================================================
+   ENTER PRIMEIRA SENHA
+========================================================= */
+
+function monthEnter(event) {
+
+    if (event.key === "Enter") {
+
+        unlockMonth();
+
+    }
+
+}
+
+
+/* =========================================================
+   REVELAR MÊS E ANO
+========================================================= */
+
+function unlockMonth() {
+
+    const input =
+        document.getElementById(
+            "monthPassword"
+        );
 
     const error =
-        document.getElementById("passwordError");
+        document.getElementById(
+            "monthError"
+        );
 
-    const date =
-        document.getElementById("secretDate");
-
-    const card =
-        document.querySelector(".proposal-card");
-
-    const lock =
-        document.getElementById("lockIcon");
-
-    const message =
-        document.getElementById("lockMessage");
-
-    const button =
-        document.getElementById("unlockButton");
-
-
-    if (input.value === proposalPassword) {
-
-        /*
-            SENHA CORRETA
-        */
+    if (input.value === monthPassword) {
 
         error.classList.remove("show");
 
-        date.classList.add("revealed");
 
-        card.classList.add("unlocked");
-
-        lock.textContent = "🔓";
-
-        message.textContent =
-            "Agora você sabe. ❤️";
-
-        button.style.display = "none";
+        /*
+            Revela mês e ano
+        */
 
         document
-            .getElementById("passwordBox")
+            .getElementById("secretMonth")
+            .classList.add("revealed");
+
+
+        /*
+            Muda o cadeado
+        */
+
+        document
+            .getElementById("monthLock")
+            .textContent = "🔓";
+
+
+        /*
+            Muda mensagem
+        */
+
+        document
+            .getElementById("monthMessage")
+            .textContent =
+                "NOVEMBRO DE 2026. ✨";
+
+
+        /*
+            Remove botão
+        */
+
+        document
+            .getElementById("monthButton")
+            .style.display = "none";
+
+
+        /*
+            Fecha caixa
+        */
+
+        document
+            .getElementById("monthPasswordBox")
             .classList.remove("active");
+
 
         input.value = "";
 
 
+        /*
+            Libera segunda etapa
+        */
+
+        unlockSecondStage();
+
+
     } else {
 
-        /*
-            SENHA ERRADA
-        */
-
         error.classList.remove("show");
-
-        /*
-            força o navegador a reiniciar
-            a animação de erro
-        */
 
         void error.offsetWidth;
 
@@ -2486,13 +3357,289 @@ function unlockDate() {
 }
 
 
-/* ==========================================
-   PROTEÇÃO BÁSICA DA PÁGINA
-========================================== */
+/* =========================================================
+   LIBERAR SEGUNDA ETAPA
+========================================================= */
+
+function unlockSecondStage() {
+
+    const stage =
+        document.getElementById(
+            "fullStage"
+        );
+
+    const button =
+        document.getElementById(
+            "fullButton"
+        );
+
+    const divider =
+        document.getElementById(
+            "secretDivider"
+        );
+
+
+    /*
+        pequena espera para dar
+        sensação de sequência
+    */
+
+    setTimeout(() => {
+
+        stage.classList.add("unlocked");
+
+        button.disabled = false;
+
+        divider.style.opacity = "1";
+
+
+        /*
+            rola suavemente até
+            a segunda etapa
+        */
+
+        setTimeout(() => {
+
+            stage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 700);
+
+    }, 900);
+
+}
+
+
+/* =========================================================
+   SEGUNDA SENHA
+   ORQUESTA
+========================================================= */
+
+function openFullPassword() {
+
+    const button =
+        document.getElementById(
+            "fullButton"
+        );
+
+    if (button.disabled) {
+
+        return;
+
+    }
+
+
+    const box =
+        document.getElementById(
+            "fullPasswordBox"
+        );
+
+    const input =
+        document.getElementById(
+            "fullPassword"
+        );
+
+
+    box.classList.add("active");
+
+
+    setTimeout(() => {
+
+        input.focus();
+
+    }, 300);
+
+}
+
+
+/* =========================================================
+   ENTER SEGUNDA SENHA
+========================================================= */
+
+function fullEnter(event) {
+
+    if (event.key === "Enter") {
+
+        unlockFullDate();
+
+    }
+
+}
+
+
+/* =========================================================
+   REVELAR DATA COMPLETA
+========================================================= */
+
+function unlockFullDate() {
+
+    const input =
+        document.getElementById(
+            "fullPassword"
+        );
+
+    const error =
+        document.getElementById(
+            "fullError"
+        );
+
+
+    if (input.value === fullDatePassword) {
+
+        error.classList.remove("show");
+
+
+        /*
+            Revela data completa
+        */
+
+        document
+            .getElementById(
+                "secretFullDate"
+            )
+            .classList.add("revealed");
+
+
+        /*
+            Cadeado aberto
+        */
+
+        document
+            .getElementById(
+                "fullLock"
+            )
+            .textContent = "🔓";
+
+
+        /*
+            Mensagem
+        */
+
+        document
+            .getElementById(
+                "fullMessage"
+            )
+            .textContent =
+                "20 DE NOVEMBRO DE 2026. ❤️";
+
+
+        /*
+            Esconde botão
+        */
+
+        document
+            .getElementById(
+                "fullButton"
+            )
+            .style.display = "none";
+
+
+        /*
+            Fecha senha
+        */
+
+        document
+            .getElementById(
+                "fullPasswordBox"
+            )
+            .classList.remove("active");
+
+
+        input.value = "";
+
+
+        /*
+            Espera a animação da data
+            terminar e mostra mensagem final
+        */
+
+        setTimeout(() => {
+
+            document
+                .getElementById(
+                    "finalMessage"
+                )
+                .classList.add("show");
+
+
+            /*
+                cria uma explosão visual
+                de partículas
+            */
+
+            celebrate();
+
+
+        }, 1800);
+
+
+    } else {
+
+        error.classList.remove("show");
+
+        void error.offsetWidth;
+
+        error.classList.add("show");
+
+        input.value = "";
+
+        input.focus();
+
+    }
+
+}
+
+
+/* =========================================================
+   CELEBRAÇÃO FINAL
+========================================================= */
+
+function celebrate() {
+
+    const container =
+        document.getElementById(
+            "particles"
+        );
+
+
+    for (let i = 0; i < 30; i++) {
+
+        const particle =
+            document.createElement("span");
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            (30 + Math.random() * 40) + "%";
+
+        particle.style.top =
+            (40 + Math.random() * 20) + "%";
+
+        particle.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        particle.style.animationDelay =
+            Math.random() * .8 + "s";
+
+        container.appendChild(
+            particle
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PROTEÇÃO BÁSICA
+========================================================= */
 
 
 /*
-    BLOQUEAR BOTÃO DIREITO
+    Bloqueia botão direito.
 */
 
 document.addEventListener(
@@ -2506,7 +3653,7 @@ document.addEventListener(
 
 
 /*
-    BLOQUEAR ALGUNS ATALHOS
+    Bloqueia alguns atalhos comuns.
 */
 
 document.addEventListener(
@@ -2526,7 +3673,6 @@ document.addEventListener(
 
         /*
             Ctrl + Shift + I
-            DevTools
         */
 
         if (
@@ -2542,7 +3688,6 @@ document.addEventListener(
 
         /*
             Ctrl + Shift + J
-            Console
         */
 
         if (
@@ -2557,23 +3702,7 @@ document.addEventListener(
 
 
         /*
-            Ctrl + U
-            Código-fonte
-        */
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase() === "u"
-        ) {
-
-            event.preventDefault();
-
-        }
-
-
-        /*
             Ctrl + Shift + C
-            Inspector
         */
 
         if (
@@ -2586,33 +3715,14 @@ document.addEventListener(
 
         }
 
-    }
-
-);
-
-
-/*
-    BLOQUEAR SELEÇÃO DO TEXTO
-
-    Isso deixa a experiência mais "fechada",
-    mas não é uma proteção real.
-*/
-
-document.addEventListener(
-    "selectstart",
-    function(event) {
 
         /*
-            Permite seleção dentro dos inputs
-            e textarea.
+            Ctrl + U
         */
 
-        const tag =
-            event.target.tagName;
-
         if (
-            tag !== "INPUT" &&
-            tag !== "TEXTAREA"
+            event.ctrlKey &&
+            event.key.toLowerCase() === "u"
         ) {
 
             event.preventDefault();
